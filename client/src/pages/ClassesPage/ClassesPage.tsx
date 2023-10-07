@@ -1,7 +1,12 @@
+import Wrapper from "../../components/Wrappers/Wrapper";
+
 const ClassesPage = () => {
-    return (
-        <div>ClassesPage</div>
-    );
+  return (
+    <Wrapper>
+      <>1</>
+      <></>
+    </Wrapper>
+  );
 };
 
 export default ClassesPage;

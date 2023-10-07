@@ -1,10 +1,12 @@
 import { Flex, Stack } from "@mantine/core";
 import { AppRoutes } from "../utils/routes";
 import { Route, Routes } from "react-router-dom";
+import NavbarNested from "./Navbar/Navbar";
 
 const AppRouter = () => {
   return(
     <Flex>
+      <NavbarNested/>
       <Stack>
         <Routes>
           {AppRoutes.map(({path, Component}) => (

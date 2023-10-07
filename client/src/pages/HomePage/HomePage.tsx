@@ -1,7 +1,13 @@
+import Wrapper from "../../components/Wrappers/Wrapper";
+import LinksList from "./components/LinksList";
+
 const HomePage = () => {
-    return (
-        <div>HomePage</div>
-    );
+  return (
+    <Wrapper>
+      <LinksList/>
+      <></>
+    </Wrapper>
+  );
 };
 
 export default HomePage;

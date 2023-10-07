@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { MantineProvider } from '@mantine/core'
-import { BrowserRouter } from 'react-router-dom'
+import RaceStore from './store/RaceStore.ts'
+
+interface State {
+  RStore: RaceStore,
+}
+
+const RStore = new RaceStore();
+
+export const Context = createContext<State>({
+  RStore,
+})
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <MantineProvider>
-      <BrowserRouter>
+    <Context.Provider value={{RStore}}>
+      <MantineProvider>
         <App />
-      </BrowserRouter>
-    </MantineProvider>
+      </MantineProvider>
+    </Context.Provider>
   </React.StrictMode>,
 )
