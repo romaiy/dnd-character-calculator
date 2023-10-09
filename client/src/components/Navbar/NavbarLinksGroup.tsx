@@ -55,7 +55,7 @@ const NavbarLink = ({Icon: Icon, path, title}: LinksProps) => {
 const NavbarLinksGroup = () => {
 
 	const links = AppRoutes.map((link) => {
-		if (link.title !== 'Главная страница') {
+		if (link.title !== 'Главная страница' && link.title !== 'Id') {
 			return (
 				<NavbarLink
 					{...link}

@@ -44,4 +44,10 @@ export const AppRoutes: Route[] = [
     title: 'Калькулятор',
     Icon: IconCalculator,
   },
+  {
+    path: RACE_ROUTE + '/:id',
+    Component: CalculatorPage,
+    title: 'Id',
+    Icon: IconUsers,
+  },
 ];

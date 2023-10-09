@@ -1,14 +1,12 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { AppRoutes } from "../../utils/routes";
-import { ActionIcon, Flex, Title } from "@mantine/core";
-import { IconChevronLeft } from "@tabler/icons-react";
+import { Flex, Title } from "@mantine/core";
 
 const TitleWrapper = () => {
   const location = useLocation();
-  const navigate = useNavigate()
   const title = AppRoutes.find(item => item.path === location.pathname)?.title!;
   
-  return (
+  if (title !== 'Id') return (
     <Flex gap={24} align={'center'}>
         <Title size={'h1'}>{title}</Title>
     </Flex>

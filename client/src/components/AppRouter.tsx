@@ -1,9 +1,15 @@
 import { Flex, Stack } from "@mantine/core";
 import { AppRoutes } from "../utils/routes";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import NavbarNested from "./Navbar/Navbar";
 
 const AppRouter = () => {
+  const location = useLocation();
+  
+  if (location.pathname === '/') {
+    return <Navigate to={'/race'}/>
+  }
+
   return(
     <Flex>
       <NavbarNested/>
