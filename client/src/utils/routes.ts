@@ -2,6 +2,7 @@ import CalculatorPage from "../pages/CalculatorPage/CalculatorPage";
 import CharactersPage from "../pages/CharactersPage/CharactersPage";
 import ClassesPage from "../pages/ClassesPage/ClassesPage";
 import HomePage from "../pages/HomePage/HomePage";
+import OnePacePage from "../pages/OneRacePage/OneRacePage";
 import RacePage from "../pages/RacePage/RacePage";
 import { CHARACTERS_ROUTE, CLASSES_ROUTE, HOME_ROUTE, RACE_ROUTE, CALCULATOR_ROUTE } from "./const";
 import { IconSwords, IconUsers, IconDeviceFloppy, IconCalculator } from '@tabler/icons-react';
@@ -46,7 +47,7 @@ export const AppRoutes: Route[] = [
   },
   {
     path: RACE_ROUTE + '/:id',
-    Component: CalculatorPage,
+    Component: OnePacePage,
     title: 'Id',
     Icon: IconUsers,
   },

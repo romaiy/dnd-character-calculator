@@ -4,14 +4,15 @@ import TitleWrapper from "./TitleWrapper";
 
 type Props = {
   children?: React.ReactNode[];
+  CustomTitle?: () => JSX.Element;
 };
 
-const Wrapper = ({children}: Props) => {
+const Wrapper = ({children, CustomTitle}: Props) => {
 
   return (
     <Flex justify="space-between" p={40} gap='1rem'>
       <Stack spacing={20} w={1248}>
-        <TitleWrapper/>
+        {CustomTitle ? <CustomTitle/> : <TitleWrapper/>}
         {children ? children[0] : <></>}
       </Stack>
       <Stack w={300}>

@@ -19,7 +19,7 @@ const RaceList = () => {
   }, [])
 
   return (
-    <Flex wrap={'wrap'} gap={30}>
+    <Flex wrap={'wrap'} gap={20}>
       {RStore.race && (
         RStore.race.map((item => (
           <RaceItem key={item.race_id} {...item}/>

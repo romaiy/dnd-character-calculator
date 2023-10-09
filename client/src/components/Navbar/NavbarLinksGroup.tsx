@@ -39,8 +39,12 @@ interface LinksProps {
 
 const NavbarLink = ({Icon: Icon, path, title}: LinksProps) => {
 	const location = useLocation();
-	const { classes } = useStyles({location: location.pathname, path: path});
-	
+	const { classes } = useStyles(
+    {
+      location: location.pathname.split('/')[1], 
+      path: path.split('/')[1]
+    }
+  );
 
 	return (
 		<NavLink to={path}>

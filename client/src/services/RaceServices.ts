@@ -7,4 +7,8 @@ export default class RaceServices {
   static async getRace() : Promise<AxiosResponse<IRace[]>> {
     return $api.get<IRace[]>('/race');
   }
+
+  static async getOneRace(id: string) : Promise<AxiosResponse<IRace>> {
+    return $api.get<IRace>(`/race/${id}`);
+  }
 }
