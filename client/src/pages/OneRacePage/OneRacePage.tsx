@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { IRace } from "../../models/IRace";
 import RaceServices from "../../services/RaceServices";
 import { useParams } from "react-router-dom";
-import { Title } from "@mantine/core";
+import { Stack, Text, Title } from "@mantine/core";
 import Wrapper from "../../components/Wrappers/Wrapper";
+import AbilityCard from "./components/AbilityCard";
 
 const OnePacePage = () => {
   const {id} = useParams();
@@ -17,14 +18,17 @@ const OnePacePage = () => {
 
   const CustomTitle = () => {
     return (
-      <Title size={'h1'}>{race?.name}</Title>
+      <Stack spacing={4}>
+        <Title size={'h1'}>{race?.name}</Title>
+        <Text size={'md'} color="gray.5">{race?.description}</Text>
+      </Stack>
     )
   }
 
   return (
     <Wrapper CustomTitle={CustomTitle}>
       <></>
-      <></>
+      {race?.details && <AbilityCard {...race?.details}/>}
     </Wrapper>
   );
 }

@@ -1,4 +1,4 @@
-import { Router, query } from "express";
+import { Router } from "express";
 import raceController from "../controller/race.controller.js";
 const router = new Router();
 

@@ -24,7 +24,7 @@ export const AppRoutes: Route[] = [
   {
     path: RACE_ROUTE,
     Component: RacePage,
-    title: 'Рассы',
+    title: 'Расы',
     Icon: IconUsers
   },
   {

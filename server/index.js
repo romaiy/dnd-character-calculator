@@ -1,5 +1,6 @@
 import express from 'express';
 import raceRouter from './routes/race.routes.js'
+import classesRouter from './routes/classes.routes.js'
 import cors from 'cors';
 
 const PORT = process.env.PORT || 8080;
@@ -13,6 +14,6 @@ app.use(cors({
   credentials: true,
 }));
 app.use(express.json());
-app.use('/api', raceRouter);
+app.use('/api', raceRouter, classesRouter);
 
 app.listen(PORT, () => console.log(`server started on port ${PORT}`));

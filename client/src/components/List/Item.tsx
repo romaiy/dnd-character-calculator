@@ -1,7 +1,13 @@
 import { Stack, Title, Text, createStyles } from "@mantine/core";
-import { IRace } from "../../../models/IRace";
 import { useNavigate } from "react-router-dom";
-import { RACE_ROUTE } from "../../../utils/const";
+import { CLASSES_ROUTE, RACE_ROUTE } from "../../utils/const";
+
+interface ItemProps {
+  id: number,
+  name: string,
+  description: string,
+  type: string
+}
 
 const useStyles = createStyles((theme) => ({
   item: {
@@ -17,13 +23,18 @@ const useStyles = createStyles((theme) => ({
   }
 }))
 
-const RaceItem = ({name, description, race_id} : IRace) => {
+const Item = ({name, description, id, type}: ItemProps) => {
   const { classes } = useStyles();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const ItemTypes: {[key: string]: string[]} = {
+    'classes': [CLASSES_ROUTE],
+    'race': [RACE_ROUTE],
+  }
 
   return (
     <Stack 
-      onClick={() => navigate(RACE_ROUTE + `/${race_id}`)} 
+      onClick={() => navigate(ItemTypes[type][0] + `/${id}`)} 
       className={classes.item} 
       p={20} w={250} spacing={6}
     >
@@ -33,4 +44,4 @@ const RaceItem = ({name, description, race_id} : IRace) => {
   );
 }
 
-export default RaceItem;
+export default Item;
