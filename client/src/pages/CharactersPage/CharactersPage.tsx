@@ -1,10 +1,11 @@
+import List from "../../components/List/List";
 import Wrapper from "../../components/Wrappers/Wrapper";
 
 const CharactersPage = () => {
 
   return(
     <Wrapper>
-      <>3</>
+      <List listData={[]} type=""/>
       <></>
     </Wrapper>
   );

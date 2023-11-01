@@ -14,7 +14,7 @@ const useStyles = createStyles((theme) => ({
     background: '#FFFF',
     borderRadius: '16px',
     color: theme.colors.gray[8],
-    transition: 'all 0.7s',
+    transition: 'all 0.2s',
     cursor: 'pointer',
     '&:hover': {
       background: theme.colors.indigo[7],

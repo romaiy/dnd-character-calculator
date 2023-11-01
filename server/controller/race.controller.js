@@ -30,9 +30,24 @@ class RaceController {
         WHERE 
           R. race_id = $1
       `, [id]
-    )
+    );
     const {race_id, name, description, ...details} = race.rows[0];
     return res.json({id: race_id, name: name, description: description, details: details});
+  }
+
+  async getSubrace(req, res) {
+    const id  = req.params.id;
+    const subrace = await db.query(
+      `
+        SELECT
+          SR. *
+        FROM
+          "subrace" SR
+        WHERE
+          SR. race_id = $1
+      `, [id]
+    );
+    return res.json(subrace.rows);
   }
 }
 

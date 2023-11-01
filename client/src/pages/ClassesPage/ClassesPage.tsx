@@ -1,8 +1,8 @@
 import Wrapper from "../../components/Wrappers/Wrapper";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../main";
-import ClassesServices from "../../services/ClassesServices";
 import List from "../../components/List/List";
+import { observer } from "mobx-react-lite";
 
 interface ListDataProps {
   id: number,
@@ -15,18 +15,15 @@ const ClassesPage = () => {
   const [listData, setListData] = useState<ListDataProps[]>([]);
 
   useEffect(() => {
-    try {
-      ClassesServices.getClasses().then(response => {
-        CStore.setClasses(response.data);
-        const data = response.data.map(item => {
-          return {id: item.class_id, name: item.name, description: item.description}
-        });
-        setListData(data);
-      })
-    } catch (error) {
-      console.log(error)
-    }
+    CStore.getClasses();
   }, []);
+
+  useEffect(() => {
+    const data = CStore.classes?.map(item => {
+      return {id: item.class_id, name: item.name, description: item.description}
+    });
+    setListData(data!);
+  }, [CStore.classes])
   
   return (
     <Wrapper>
@@ -36,4 +33,4 @@ const ClassesPage = () => {
   );
 };
 
-export default ClassesPage;
+export default observer(ClassesPage);

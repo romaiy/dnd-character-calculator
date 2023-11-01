@@ -1,4 +1,5 @@
 import CalculatorPage from "../pages/CalculatorPage/CalculatorPage";
+import CharactersCreatePage from "../pages/CharactersCreatePage/CharactersCreatePage";
 import CharactersPage from "../pages/CharactersPage/CharactersPage";
 import ClassesPage from "../pages/ClassesPage/ClassesPage";
 import HomePage from "../pages/HomePage/HomePage";
@@ -50,5 +51,11 @@ export const AppRoutes: Route[] = [
     Component: OnePacePage,
     title: 'Id',
     Icon: IconUsers,
+  },
+  {
+    path: CHARACTERS_ROUTE + '/:id',
+    Component: CharactersCreatePage,
+    title: 'Id',
+    Icon: IconDeviceFloppy,
   },
 ];
