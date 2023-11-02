@@ -1,15 +1,13 @@
 import { Flex, Select, Stack, TextInput } from "@mantine/core";
 import { useContext, useEffect } from "react";
-import { Control, Controller, FieldValues } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { Context } from "../../../main";
 import { observer } from "mobx-react-lite";
+import SubraceInput from "./SubraceInput";
 
-interface formProps {
-  control: Control<FieldValues, any>
-}
-
-const CharactersCreateFields = ({control}: formProps) => {
+const CharactersCreateFields = () => {
   const {CStore, RStore} = useContext(Context);
+  const {control} = useFormContext();
 
   useEffect(() => {
     CStore.getClasses();
@@ -52,7 +50,7 @@ const CharactersCreateFields = ({control}: formProps) => {
       <Flex gap={32}>
         <Controller
           control={control}
-          name="race"
+          name='race'
           render={({field}) => 
             <Select 
               {...field}
@@ -65,8 +63,9 @@ const CharactersCreateFields = ({control}: formProps) => {
               label="Выберете рассу персонажа"
               className="input"
             />
-            }
-          />
+          }
+        />
+        <SubraceInput/>
       </Flex>
     </Stack>
   );

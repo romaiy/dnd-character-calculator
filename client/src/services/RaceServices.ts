@@ -13,7 +13,7 @@ export default class RaceServices {
     return $api.get<IRace>(`/race/${id}`);
   }
 
-  static async getSubrace(id: string) : Promise<AxiosResponse<ISubrace>> {
-    return $api.get<ISubrace>(`/subrace/${id}`);
+  static async getSubrace(id: string) : Promise<AxiosResponse<ISubrace[]>> {
+    return $api.get<ISubrace[]>(`/subrace/${id}`);
   }
 }

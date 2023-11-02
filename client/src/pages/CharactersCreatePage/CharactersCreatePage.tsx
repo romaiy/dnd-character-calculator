@@ -2,13 +2,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import Wrapper from "../../components/Wrappers/Wrapper";
 import { ActionIcon, Flex, Title } from "@mantine/core";
 import { IconChevronLeft } from "@tabler/icons-react";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import CharactersCreateFields from "./components/CharactersCreateFields";
 
 const CharactersCreatePage = () => {
   const {id} = useParams();
   const navigate = useNavigate();
-  const {control} = useForm({mode: 'onSubmit'});
+  const methods = useForm({mode: 'onSubmit'});
 
   const CustomTitle = () => {
     return (
@@ -23,9 +23,9 @@ const CharactersCreatePage = () => {
 
   return (
     <Wrapper CustomTitle={CustomTitle}>
-      <CharactersCreateFields
-        control={control}
-      />
+      <FormProvider {...methods}>
+        <CharactersCreateFields/>
+      </FormProvider>
       <></>
     </Wrapper>
   );
