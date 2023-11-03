@@ -15,8 +15,8 @@ const CharactersCreateFields = () => {
   }, []);
 
   return (
-    <Stack bg={'#ffff'} p={24} style={{borderRadius: '16px'}} spacing={32}>
-      <Flex gap={32}>
+    <Stack bg={'#ffff'} p={40} style={{borderRadius: '16px'}} spacing={24}>
+      <Flex gap={16}>
         <Controller
           control={control}
           name="name"
@@ -47,7 +47,7 @@ const CharactersCreateFields = () => {
           }
         />
       </Flex>
-      <Flex gap={32}>
+      <Flex gap={16}>
         <Controller
           control={control}
           name='race'
@@ -60,7 +60,7 @@ const CharactersCreateFields = () => {
                 : []
               }
               placeholder="Дварф"
-              label="Выберете рассу персонажа"
+              label="Выберете расу персонажа"
               className="input"
             />
           }

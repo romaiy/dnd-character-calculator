@@ -32,16 +32,17 @@ const SubraceInput = () => {
   return (
     <>
       {
-        subrace.length > 0 && <Controller
+        <Controller
+          disabled={!subrace.length}
           name="subrace"
           control={control}
           render={({field}) =>
             <Select
               {...field}
-              label="Выберете подрассу персонажа"
+              label="Выберете подрасу персонажа"
               data={subrace}
               className="input"
-              placeholder="Холмовой дворф"
+              placeholder={!subrace.length ? "Нет подрасы" : "Холмовой дварф"}
             />
           }
         />

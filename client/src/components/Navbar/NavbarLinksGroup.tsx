@@ -10,7 +10,7 @@ interface styleProps {
 
 const useStyles = createStyles((theme, {location, path}: styleProps) => ({
 	link: {
-		width: '204px',
+		width: '236px',
 		borderRadius: '8px',
 		padding: '12px 16px',
 		transition: 'all 0.2s',

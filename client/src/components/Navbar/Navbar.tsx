@@ -27,7 +27,7 @@ const NavbarNested = () => {
 
   return (
     <Navbar 
-      width={{ base: '268px' }}  
+      width={{ base: '300px' }}  
       className={classes.navbar}
       height={'100vh'} 
     >
