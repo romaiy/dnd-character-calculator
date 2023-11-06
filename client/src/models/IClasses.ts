@@ -1,5 +1,5 @@
 export interface IClasses {
   class_id: number,
-  name: string,
+  class_name: string,
   description: string,
 }

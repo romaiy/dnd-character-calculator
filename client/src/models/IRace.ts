@@ -1,6 +1,6 @@
 export interface IRace {
   race_id: number,
-  name: string,
+  race_name: string,
   description: string,
   details?: IRaceDetails,
 }

@@ -20,7 +20,7 @@ const RacePage = () => {
 
   useEffect(() => {
     const data = RStore.race?.map(item => {
-      return {id: item.race_id, name: item.name, description: item.description}
+      return {id: item.race_id, name: item.race_name, description: item.description}
     });
     setListData(data!);
   }, [RStore.race])

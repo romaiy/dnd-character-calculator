@@ -1,6 +1,6 @@
 import { Stack, Title, Text, createStyles } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
-import { CLASSES_ROUTE, RACE_ROUTE } from "../../utils/const";
+import { CHARACTERS_ROUTE, CLASSES_ROUTE, RACE_ROUTE } from "../../utils/const";
 
 interface ItemProps {
   id: number,
@@ -30,6 +30,7 @@ const Item = ({name, description, id, type}: ItemProps) => {
   const ItemTypes: {[key: string]: string[]} = {
     'classes': [CLASSES_ROUTE],
     'race': [RACE_ROUTE],
+    'character': [CHARACTERS_ROUTE],
   }
 
   return (

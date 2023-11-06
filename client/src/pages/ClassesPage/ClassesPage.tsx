@@ -20,7 +20,7 @@ const ClassesPage = () => {
 
   useEffect(() => {
     const data = CStore.classes?.map(item => {
-      return {id: item.class_id, name: item.name, description: item.description}
+      return {id: item.class_id, name: item.class_name, description: item.description}
     });
     setListData(data!);
   }, [CStore.classes])

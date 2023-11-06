@@ -4,6 +4,7 @@ import { ActionIcon, Flex, Title } from "@mantine/core";
 import { IconChevronLeft } from "@tabler/icons-react";
 import { FormProvider, useForm } from "react-hook-form";
 import CharactersCreateFields from "./components/CharactersCreateFields";
+import $api from "../../http";
 
 const CharactersCreatePage = () => {
   const {id} = useParams();
@@ -21,10 +22,14 @@ const CharactersCreatePage = () => {
     )
   }
 
+  const handleCreate = methods.handleSubmit((formData) => {
+    $api.post('/character', formData).then(response => console.log(response.data))
+  });
+
   return (
     <Wrapper CustomTitle={CustomTitle}>
       <FormProvider {...methods}>
-        <CharactersCreateFields/>
+        <CharactersCreateFields handleCreate={handleCreate}/>
       </FormProvider>
       <></>
     </Wrapper>

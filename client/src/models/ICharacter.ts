@@ -1,6 +1,7 @@
 export interface ICharacter {
-  character_id: number,
+  id: number,
   name: string,
-  race: string,
-  level: number,
+  race_name: string,
+  class_name: string,
+  subrace_name: string | null,
 }

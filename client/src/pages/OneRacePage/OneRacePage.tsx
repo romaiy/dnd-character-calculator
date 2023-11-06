@@ -19,7 +19,7 @@ const OnePacePage = () => {
   const CustomTitle = () => {
     return (
       <Stack spacing={4}>
-        <Title size={'h1'}>{race?.name}</Title>
+        <Title size={'h1'}>{race?.race_name}</Title>
         <Text size={'md'} color="gray.5">{race?.description}</Text>
       </Stack>
     )

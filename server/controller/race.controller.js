@@ -3,7 +3,7 @@ import db from '../db.js';
 class RaceController {
 
   async getRace(_req, res) {
-    const race  = await db.query(`SELECT "race_id", "name", "description" FROM race`);
+    const race  = await db.query(`SELECT "race_id", "race_name", "description" FROM race`);
     return res.json(race.rows);
   }
 
@@ -31,8 +31,8 @@ class RaceController {
           R. race_id = $1
       `, [id]
     );
-    const {race_id, name, description, ...details} = race.rows[0];
-    return res.json({id: race_id, name: name, description: description, details: details});
+    const {race_id, race_name, description, ...details} = race.rows[0];
+    return res.json({id: race_id, name: race_name, description: description, details: details});
   }
 
   async getSubrace(req, res) {

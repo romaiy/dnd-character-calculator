@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { ICharacter } from "../models/ICharacter";
+import CharactersServices from "../services/CharactersServices";
 
 export class CharactersStore {
   characters = {} as ICharacter[] | undefined;
@@ -11,5 +12,15 @@ export class CharactersStore {
 
   setCharacters(characters: ICharacter[]) {
     this.characters = characters;
+  }
+
+  async getCharacters() {
+    try {
+      CharactersServices.getCharacters().then(response => {
+        this.setCharacters(response.data);
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 }

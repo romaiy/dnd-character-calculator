@@ -1,11 +1,15 @@
-import { Flex, Select, Stack, TextInput } from "@mantine/core";
+import { Button, Flex, Select, Stack, TextInput } from "@mantine/core";
 import { useContext, useEffect } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { Context } from "../../../main";
 import { observer } from "mobx-react-lite";
 import SubraceInput from "./SubraceInput";
 
-const CharactersCreateFields = () => {
+interface props {
+  handleCreate: Function;
+}
+
+const CharactersCreateFields = ({handleCreate}: props) => {
   const {CStore, RStore} = useContext(Context);
   const {control} = useFormContext();
 
@@ -31,13 +35,13 @@ const CharactersCreateFields = () => {
         />
         <Controller
           control={control}
-          name="class"
+          name="class_id"
           render={({field}) => 
             <Select 
               {...field}
               data={
                 CStore.classes ? 
-                CStore.classes?.map((item) => {return {label: item.name, value: `${item.class_id}`}}) 
+                CStore.classes?.map((item) => {return {label: item.class_name, value: `${item.class_id}`}}) 
                 : []
               }
               placeholder="Друид"
@@ -56,7 +60,7 @@ const CharactersCreateFields = () => {
               {...field}
               data={
                 RStore.race ? 
-                RStore.race?.map((item) => {return {label: item.name, value: `${item.race_id}`}}) 
+                RStore.race?.map((item) => {return {label: item.race_name, value: `${item.race_id}`}}) 
                 : []
               }
               placeholder="Дварф"
@@ -67,6 +71,7 @@ const CharactersCreateFields = () => {
         />
         <SubraceInput/>
       </Flex>
+      <Button onClick={() => handleCreate()} className="button">Создать</Button>
     </Stack>
   );
 }
