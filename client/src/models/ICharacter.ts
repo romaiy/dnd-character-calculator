@@ -4,4 +4,5 @@ export interface ICharacter {
   race_name: string,
   class_name: string,
   subrace_name: string | null,
+  race_id: number,
 }

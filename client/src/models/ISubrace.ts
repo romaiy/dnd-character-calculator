@@ -1,6 +1,6 @@
 export interface ISubrace {
   race_id: number,
-  name: string,
+  subrace_name: string,
   description: string,
   feature: string,
   modifier: number,

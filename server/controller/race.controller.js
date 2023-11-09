@@ -32,7 +32,7 @@ class RaceController {
       `, [id]
     );
     const {race_id, race_name, description, ...details} = race.rows[0];
-    return res.json({id: race_id, name: race_name, description: description, details: details});
+    return res.json({id: race_id, race_name: race_name, description: description, details: details});
   }
 
   async getSubrace(req, res) {

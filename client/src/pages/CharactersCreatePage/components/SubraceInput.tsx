@@ -18,7 +18,7 @@ const SubraceInput = () => {
   useEffect(() => {
     if (RStore.subrace?.length) {
       const data = RStore.subrace?.map(item => {
-        return {value: `${item.name}`, label: item.name}
+        return {value: `${item.subrace_name}`, label: item.subrace_name}
       });
       setSubrace(data!);
     } else {

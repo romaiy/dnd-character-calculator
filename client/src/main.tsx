@@ -1,4 +1,4 @@
-import React, { createContext } from 'react'
+import { createContext } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { MantineProvider } from '@mantine/core'
@@ -23,9 +23,8 @@ export const Context = createContext<State>({
 })
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <Context.Provider value={{RStore, CStore, ChStore}}>
-      <MantineProvider
+  <Context.Provider value={{RStore, CStore, ChStore}}>
+    <MantineProvider
       theme={{
         globalStyles: (theme) => ({
           '.button': {
@@ -123,12 +122,18 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               fontSize: '14px',
               lineHeight: '22px'
             }
+          },
+          '.image': {
+            img: {
+              borderRadius: '24px',
+              width: '503px',
+              height: '670px'
+            }
           }
         })
       }}
-      >
-        <App />
-      </MantineProvider>
-    </Context.Provider>
-  </React.StrictMode>,
+    >
+      <App />
+    </MantineProvider>
+  </Context.Provider>
 )

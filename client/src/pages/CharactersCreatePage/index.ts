@@ -1,1 +1,1 @@
-export {default} from './CharactersCreatePage';
+export {default} from './CharacterPage';

@@ -24,6 +24,30 @@ class CharactersController {
     return res.json(characters.rows);
   }
 
+  async getOneCharacter(req, res) {
+    const id = req.params.id;
+    const characters  = await db.query(
+      `
+        SELECT 
+          C. "name", CL. "class_name", R. "race_name", S. "subrace_name", C. "id", R. "race_id"
+        FROM 
+          "characters" C
+        LEFT JOIN
+          "race" R ON
+              (R."race_id" = C."race_id")
+        LEFT JOIN
+          "class" CL ON
+            (CL."class_id" = C."class_id")
+        LEFT JOIN
+          "subrace" S ON
+            (S."subrace_name" = C."subrace_name")
+        WHERE
+          C. "id" = $1 
+      `, [id]
+    );
+    return res.json(characters.rows[0]);
+  }
+
   async createCharacter(req, res) {
     const {name, class_id, race, subrace} = req.body;
     const id  = utilsController.generateId();

@@ -7,4 +7,8 @@ export default class CharactersServices {
   static async getCharacters() : Promise<AxiosResponse<ICharacter[]>> {
     return $api.get<ICharacter[]>('/characters');
   }
+
+  static async getOneCharacter(id: number) : Promise<AxiosResponse<ICharacter>> {
+    return $api.get<ICharacter>(`/character/${id}`);
+  }
 }

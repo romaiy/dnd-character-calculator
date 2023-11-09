@@ -3,6 +3,7 @@ import charactersController from "../controller/characters.controller.js";
 const router = new Router();
 
 router.get('/characters', charactersController.getCharacters);
+router.get('/character/:id', charactersController.getOneCharacter);
 router.post('/character', charactersController.createCharacter);
 router.put('/character/:id', charactersController.updateCharacter);
 router.delete('/character/:id', charactersController.deleteCharacter);
