@@ -13,16 +13,17 @@ interface ListDataProps {
 interface ListProps {
   listData: ListDataProps[],
   type: string,
+  handleDelete?: Function,
 }
 
-const List = ({listData, type}: ListProps) => {
+const List = ({listData, type, handleDelete}: ListProps) => {
   const location = useLocation();
 
   return (
     <Flex wrap={'wrap'} gap={20}>
       {listData && (
         listData.map((item => (
-          <Item key={item.id} {...item} type={type}/>
+          <Item key={item.id} {...item} type={type} handleDelete={handleDelete}/>
         )))
       )}
       {location.pathname === CHARACTERS_ROUTE && <ItemAdd/>}

@@ -51,9 +51,28 @@ class CharactersController {
   async createCharacter(req, res) {
     const {name, class_id, race, subrace} = req.body;
     const id  = utilsController.generateId();
-    const character = await db.query(
-      `INSERT INTO characters (id, name, class_id, race_id, subrace_name) values ($1, $2, $3, $4, $5) RETURNING *`
+    await db.query(
+      `INSERT INTO characters (id, name, class_id, race_id, subrace_name) values ($1, $2, $3, $4, $5);`
     , [id, name, class_id, race, subrace]);
+    const character  = await db.query(
+      `
+        SELECT 
+          C. "name", CL. "class_name", R. "race_name", S. "subrace_name", C. "id", R. "race_id"
+        FROM 
+          "characters" C
+        LEFT JOIN
+          "race" R ON
+              (R."race_id" = C."race_id")
+        LEFT JOIN
+          "class" CL ON
+            (CL."class_id" = C."class_id")
+        LEFT JOIN
+          "subrace" S ON
+            (S."subrace_name" = C."subrace_name")
+        WHERE
+          C. "id" = $1 
+      `, [id]
+    );
     return res.json(character.rows[0]);
   }
 

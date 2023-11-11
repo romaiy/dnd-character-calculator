@@ -24,6 +24,12 @@ const CharacterInfo = ({character}: props) => {
           <Text size={'md'} color="gray.5">Раса:</Text>
           <Text size={'md'}>{character?.race_name}</Text>
         </Flex>
+        {character?.subrace_name && (
+            <Flex align={'center'} gap={16}>
+              <Text size={'md'} color="gray.5">Подраса:</Text>
+              <Text size={'md'}>{character?.subrace_name}</Text>
+            </Flex>
+        )}
         <Flex align={'center'} gap={16}>
           <Text size={'md'} color="gray.5">Класс:</Text>
           <Text size={'md'}>{character?.class_name}</Text>
