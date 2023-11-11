@@ -28,13 +28,10 @@ const CharacterPage = () => {
 
   useEffect(() => {
     if (id && id !== 'new') {
-      ChStore.getOneCharacter(+id);
+      ChStore.getOneCharacter(+id)
+      .then(response => setCharacter(response?.data))
     }
   }, []);
-
-  useEffect(() => {
-    setCharacter(ChStore.character);
-  }, [ChStore.character]);
 
   return (
     <FormProvider {...methods}>
@@ -42,7 +39,7 @@ const CharacterPage = () => {
         {id === 'new' ? ( 
           <CharactersCreateFields handleCreate={handleCreate}/>
         ) : (
-          <CharacterInfo/>
+          <CharacterInfo character={character!}/>
         )}
         <CharacterImage id={id !== 'new' ? character?.race_id : undefined}/>
       </Wrapper>

@@ -1,8 +1,5 @@
-import { Flex, Loader, Stack } from "@mantine/core";
-import { observer } from "mobx-react-lite";
+import { Flex, Stack } from "@mantine/core";
 import TitleWrapper from "./TitleWrapper";
-import { useContext } from "react";
-import { Context } from "../../main";
 
 type Props = {
   children?: React.ReactNode[];
@@ -10,11 +7,6 @@ type Props = {
 };
 
 const Wrapper = ({children, CustomTitle}: Props) => {
-  const {ChStore} = useContext(Context);
-  
-  if (ChStore.isLoading) {
-    return <Loader/>
-  }
 
   return (
     <Stack bg={'gray.0'} p={'40px'} spacing={24}>
@@ -31,4 +23,4 @@ const Wrapper = ({children, CustomTitle}: Props) => {
   );
 };
 
-export default observer(Wrapper);
+export default Wrapper;

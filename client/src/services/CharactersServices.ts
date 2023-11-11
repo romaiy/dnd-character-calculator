@@ -11,4 +11,8 @@ export default class CharactersServices {
   static async getOneCharacter(id: number) : Promise<AxiosResponse<ICharacter>> {
     return $api.get<ICharacter>(`/character/${id}`);
   }
+
+  static async deleteCharacter(id: number) : Promise<AxiosResponse> {
+    return $api.delete(`/character/${id}`);
+  }
 }

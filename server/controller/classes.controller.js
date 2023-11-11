@@ -8,5 +8,4 @@ class ClassesController {
   }
 }
 
-
 export default new ClassesController();

@@ -15,15 +15,14 @@ const RacePage = () => {
   const [listData, setListData] = useState<ListDataProps[]>([]);
 
   useEffect(() => {
-    RStore.getRace();
-  }, []);
-
-  useEffect(() => {
-    const data = RStore.race?.map(item => {
-      return {id: item.race_id, name: item.race_name, description: item.description}
+    RStore.getRace()
+    .then(response => {
+      const data = response?.data?.map(item => {
+        return {id: item.race_id, name: item.race_name, description: item.description}
+      });
+      setListData(data!);
     });
-    setListData(data!);
-  }, [RStore.race])
+  }, []);
 
   return (
     <Wrapper>

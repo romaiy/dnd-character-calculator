@@ -15,17 +15,16 @@ const CharactersPage = () => {
   const [listData, setListData] = useState<ListDataProps[]>([]);
 
   useEffect(() => {
-    ChStore.getCharacters();
-  }, []);
-
-  useEffect(() => {
-    const data = ChStore.characters?.map(item => {
-      return {id: item.id, name: item.name, 
-        description: `${item.subrace_name ? 
-          item.subrace_name  : item.race_name}, ${item.class_name}`}
+    ChStore.getCharacters()
+    .then(response => {
+      const data = response?.data?.map(item => {
+        return {id: item.id, name: item.name, 
+          description: `${item.subrace_name ? 
+            item.subrace_name  : item.race_name}, ${item.class_name}`}
+      });
+      setListData(data!);
     });
-    setListData(data!);
-  }, [ChStore.characters])
+  }, []);
 
   return(
     <Wrapper>

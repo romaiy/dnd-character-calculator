@@ -12,22 +12,19 @@ const SubraceInput = () => {
   const race = watch('race');
 
   useEffect(() => {
-    race && RStore.getSubrace(race);
+    race && RStore.getSubrace(race)
+    .then(response => {
+      if (response?.data.length) {
+        const data = response.data.map(item => {
+          return {value: `${item.subrace_name}`, label: item.subrace_name}
+        });
+        setSubrace(data!);
+      } else {
+        setValue('subrace', null);
+        setSubrace([]);
+      }
+    });
   }, [race]);
-
-  useEffect(() => {
-    if (RStore.subrace?.length) {
-      const data = RStore.subrace?.map(item => {
-        return {value: `${item.subrace_name}`, label: item.subrace_name}
-      });
-      setSubrace(data!);
-    } else {
-      RStore.setSubrace(undefined);
-      setValue('subrace', null);
-      setSubrace([]);
-    }
-  }, [RStore.subrace])
-
 
   return (
     <>

@@ -15,15 +15,14 @@ const ClassesPage = () => {
   const [listData, setListData] = useState<ListDataProps[]>([]);
 
   useEffect(() => {
-    CStore.getClasses();
-  }, []);
-
-  useEffect(() => {
-    const data = CStore.classes?.map(item => {
-      return {id: item.class_id, name: item.class_name, description: item.description}
+    CStore.getClasses()
+    .then(response => {
+      const data = response?.data.map(item => {
+        return {id: item.class_id, name: item.class_name, description: item.description}
+      });
+      setListData(data!);
     });
-    setListData(data!);
-  }, [CStore.classes])
+  }, []);
   
   return (
     <Wrapper>
